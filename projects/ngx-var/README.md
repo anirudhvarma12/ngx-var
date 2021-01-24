@@ -1,24 +1,70 @@
-# NgxVar
+# `*ngxVar`
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.13.
+Angular developers often use `*ngIf="foo$ | async as foo` to consume an observable easily in templates. However, this approach does not work if your observable emits a boolean as the `ngIf` will hide the template when the source observable emits a falsy value.
 
-## Code scaffolding
+`*ngxVar` allows developers to easily consume any observable (or static values) regardless of the type.
 
-Run `ng generate component component-name --project ngx-var` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-var`.
-> Note: Don't forget to add `--project ngx-var` or else it will be added to the default project in your `angular.json` file. 
+# Installation
+```
+npm i --save ngx-var
+```
 
-## Build
+## Import the module
 
-Run `ng build ngx-var` to build the project. The build artifacts will be stored in the `dist/` directory.
+```ts
+import { NgxVarModule } from "ngx-var"
 
-## Publishing
+@NgModule({
+  imports: [NgxVarModule],
+})
+class AppModule {}
+```
 
-After building your library with `ng build ngx-var`, go to the dist folder `cd dist/ngx-var` and run `npm publish`.
+# Examples
+(Examples taken from tests)
+
+## TestComponent
+
+```ts
+class TestComponent {
+  numberObservable$: Observable<number>;
+  boolObservable$: Observable<boolean>;
+  sampleString = 'aa';
+  sampleFunc = (a: number, b: number) => a * b;
+}
+```
+
+## Use with a single boolean observable 
+
+```html
+<ng-container *ngxVar="boolObservable$ | async as bool">
+    <span>{{bool ? 'true':'false'}}</span>
+</ng-container>`
+```
+
+## Use with multiple values
+
+```html
+<ng-container *ngxVar="{ a: numberObservable$ | async, b: sampleString } as data">
+    {{data.a}} {{data.b}}
+</ng-container>
+```
+* Note: As you can see, `sampleString` is not an observable value, but can still be used.
+
+## Use with `let` syntax
+
+```html
+<span *ngxVar="sampleFunc(5, 5); let data">
+    {{data}}
+</span>
+```
+
+# Development
 
 ## Running unit tests
 
-Run `ng test ngx-var` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Further help
+## Build
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.

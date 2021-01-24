@@ -5,7 +5,20 @@ Angular developers often use `*ngIf="foo$ | async as foo` to consume an observab
 `*ngxVar` allows developers to easily consume any observable (or static values) regardless of the type.
 
 # Installation
-// TODO
+```
+npm i --save ngx-var
+```
+
+## Import the module
+
+```ts
+import { NgxVarModule } from "ngx-var"
+
+@NgModule({
+  imports: [NgxVarModule],
+})
+class AppModule {}
+```
 
 # Examples
 (Examples taken from tests)
