@@ -1,6 +1,7 @@
 {
   "name": "ngx-var",
-  "version": "0.1.1",
+  "version": "0.1.2",
+  "license": "MIT",
   "repository": "https://github.com/anirudhvarma12/ngx-var",
   "peerDependencies": {
     "@angular/common": "^9.1.13",
