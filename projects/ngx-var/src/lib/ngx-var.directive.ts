@@ -41,7 +41,7 @@ export class Context<T = unknown> {
   selector: '[ngxVar]',
 })
 export class NgxVarDirective<T = unknown> implements OnInit {
-  private _context = new Context();
+  private _context = new Context<T>();
 
   @Input()
   set ngxVar(value: T) {
@@ -51,7 +51,7 @@ export class NgxVarDirective<T = unknown> implements OnInit {
 
   constructor(
     private _vcr: ViewContainerRef,
-    private _templateRef: TemplateRef<Context>
+    private _templateRef: TemplateRef<Context<T>>
   ) {}
 
   ngOnInit() {
