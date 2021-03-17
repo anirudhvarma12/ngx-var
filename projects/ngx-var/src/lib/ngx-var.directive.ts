@@ -58,9 +58,6 @@ export class NgxVarDirective<T = unknown> implements OnInit {
     this._vcr.createEmbeddedView(this._templateRef, this._context);
   }
 
-  /** @internal */
-  public static ngxVarUseIfTypeGuard: void;
-
   /**
    * Assert the correct type of the expression bound to the `ngxVar` input within the template.
    *
