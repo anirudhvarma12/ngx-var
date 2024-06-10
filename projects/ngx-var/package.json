@@ -1,11 +1,11 @@
 {
   "name": "ngx-var",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "license": "MIT",
   "repository": "https://github.com/anirudhvarma12/ngx-var",
   "peerDependencies": {
-    "@angular/common": "^9.1.13",
-    "@angular/core": "^9.1.13"
+    "@angular/compiler": "^14.3.0",
+    "@angular/core": "^14.3.0"
   },
   "dependencies": {
     "tslib": "^1.10.0"

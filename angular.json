@@ -43,5 +43,8 @@
         }
       }
     }},
-  "defaultProject": "ngx-var"
+  "defaultProject": "ngx-var",
+  "cli": {
+    "analytics": false
+  }
 }
